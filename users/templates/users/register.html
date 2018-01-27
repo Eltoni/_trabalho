@@ -1,0 +1,12 @@
+{% extends "app/base.html" %}
+{% block content %}
+
+<div class="page-header">
+<form method="post" action="{% url 'users:register' %}">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button name="submit">Registrar</button>
+  <input type="hidden" name="next" value="{% url 'app:index' %}">
+</form>
+</div>
+{% endblock content %}

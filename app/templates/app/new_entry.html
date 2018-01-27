@@ -1,0 +1,12 @@
+{% extends "app/base.html" %}
+{% block content %}
+<div class="page-header">
+  <h2><a href="{% url 'app:topic'  topic.id  %}">{{ topic }}</a></h2>
+</div>
+<form action="{% url 'app:new_entry' topic.id %}" method="post" class="form">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button name="submit" class="btn btn-primary"> Add Assunto </button>
+</form>
+
+{% endblock content %}

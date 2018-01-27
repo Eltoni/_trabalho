@@ -1,0 +1,49 @@
+{% extends "app/base.html" %}
+{% block content %}
+<div class="page-header pull-center">
+			<h2>Topicos: {{ topic }}</h2>
+		</div>
+<div class="row">
+
+  <a href="{% url 'app:new_entry' topic.id %}" class="btn btn-primary pull-right"> Add Novo Assunto </a>
+
+</div>
+<div class="page-header pull-center">
+			<h4>Entradas: </h4>
+		</div>
+
+  {% for entry in entries %}
+
+  <div class="row">
+			<div class="col-sm-3 col-md-12">
+				<div class="thumbnail">
+					<p class="pull-right">{{ entry.date_added|date:'M d, Y H:i'}}</p>
+					<div class="caption content">
+						<p>{{ entry.text|linebreaks }}<p>
+						<p><a href="#" class="btn btn-success" role="button">Button</a>
+              <a href="{% url 'app:edit_entry' entry.id %}" class="btn btn-primary"> Editar Assunto </a>
+              <a href="#" class="btn btn-default" role="button">Button</a></p>
+					</div>
+				</div>
+			</div>
+    </div>
+
+
+      <!-- Mostra a Data e utiliza um filtro(|date:'M d, Y H:i') na data modificando seu formato -->
+
+
+      <!-- Mostra o Texto e utiliza um filtro (linebreaks) para que os textos
+       não ficam ultrapassando a pagina do Browser -->
+
+
+
+
+
+  {% empty %}
+  <ul>
+    <li><p>Este tópico não possui entrada</p></li>
+  </ul>
+  {% endfor %}
+
+
+{% endblock content %}

@@ -1,0 +1,30 @@
+{% extends "app/base.html" %}
+{% block content %}
+<div class="page-header">
+<h3>Topics</h3>
+</div>
+<div class="row">
+<a type="button" href="{% url 'app:new_topic' %}" class="btn btn-primary pull-right">Add Tópico</a>
+</div>
+  {% for topic in topics %}
+
+  <div class="row">
+
+			<div class="col-sm-6 col-md-4">
+<a href="{% url 'app:topic'  topic.id  %} ">
+        <div class="thumbnail jumbotron">
+          <ul>
+          <li>
+					  {{ topic }}   </li>
+          </ul>
+            </div></a>
+    </div>
+
+  </div>
+  {% empty %}
+    <li> Não Existe Nenhum Tópico </li>
+  {% endfor %}
+
+
+
+{% endblock content %}

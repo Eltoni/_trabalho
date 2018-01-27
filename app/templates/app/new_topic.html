@@ -1,0 +1,12 @@
+{% extends "app/base.html" %}
+{% block content %}
+<div class="page-header">
+<h3>Add a New topic:</h3>
+</div>
+<form action="{% url 'app:new_topic' %}" method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button name="submit" class="btn btn-primary"> Add Topico</button>
+</form>
+
+{% endblock content %}

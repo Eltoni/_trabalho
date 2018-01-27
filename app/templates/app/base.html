@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <title>Diário</title>
+
+    {% load static %}
+  	<link href="{% static "bootstrap.min.css" %}" rel="stylesheet">
+  	<link href="{% static "custom.min.css" %}" rel="stylesheet">
+  </head>
+
+  <body>
+    <!-- Static NaveBar navbar navbar-inverse bg-inverse-->
+    <div class="navbar navbar-default navbar-fixed-top">
+     <div class="container">
+           <div class="navbar-header">
+             <a href="{% url 'app:index' %}" class="navbar-brand">Diários Do Usuário</a>
+             <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+             </button>
+           </div>
+           <div class="navbar-collapse collapse" id="navbar-main">
+               <ul class="nav navbar-nav">
+                     <li>
+                       <a href="/">Início</a>
+                     </li>
+                     <!--<li class="dropdown">
+                       <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">Categorias <span class="caret"></span></a>
+                       <ul class="dropdown-menu" aria-labelledby="download">
+                         <li><a href="">Notebooks</a></li>
+                         <li><a href="">Acessórios</a></li>
+                         <li><a href="">Celulares</a></li>
+                       </ul>
+                     </li>-->
+
+                {% if user.is_authenticated %}
+                      <li> <a href="{% url 'app:topics' %}"> Topics </a></li>
+                      <li> <a> Olá, {{ user.username }}</a><li>
+                      <li> <a href="{% url 'users:logout' %}"> Log out </a></li>
+                </ul>
+                {% else %}
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+
+                     <li> <a href="{% url 'users:login' %}"> Login </a>
+                     <li> <a href="{% url 'users:register' %}"> Registrar </a></li>
+                </ul>
+                {% endif %}
+            </div>
+					</div>
+   </div>
+
+
+<div class="container">
+
+    {% block content %}
+
+    {% endblock content %}
+		<footer>
+			<div class="row">
+			  <div class="col-lg-12">
+			    <ul class="list-unstyled">
+			      <li class="pull-right"><a href="#top">Voltar ao Topo</a></li>
+			      <li><a href="">Início</a></li>
+			      <li><a href="">Produtos</a></li>
+			      <li><a href="">Contato</a></li>
+			      <li><a href="">Termos e Privacidade</a></li>
+			    </ul>
+			  </div>
+			</div>
+		</footer>
+	</div>
+
+    <script src="{% static "jquery.js" %}"></script>
+      <script src="{% static "bootstrap.min.js" %}"></script>
+  </body>
+</html>
