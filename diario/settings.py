@@ -129,7 +129,7 @@ STATIC_URL = '/static/'
 #if os.getcwd() == '/app:
 if os.getcwd():
 	import dj_database_url
-	DATABASES = {
+	DATABASES = { 
 		'default':dj_database_url.config(default='postgres://localhost')
 	}
 #Honra o Cabeçalho 'X-Forwarded-proto' para request.is_secure()
