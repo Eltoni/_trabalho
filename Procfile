@@ -1,1 +1,1 @@
-web: gunicorn trabalho.wsgi --log-file -
+web: gunicorn diario.wsgi --log-file -
